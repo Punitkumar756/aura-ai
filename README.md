@@ -534,28 +534,6 @@ Project → Settings → Webhooks → [webhook] → Recent Deliveries
 - 🔒 **Private GitLab instances** - Self-signed certs fail validation (workaround: disable in dev)
 - 🧠 **OpenAI context limit** - Very long logs may exceed token limit (fix: truncate logs)
 
-## ❓ FAQ
-
-**Q: 🔐 Can Aura AI modify production code directly?**  
-A: No. Aura AI only creates branches and opens MRs. Humans must review and approve all changes before merge.
-
-**Q: 🐙 Does it work with GitHub?**  
-A: Not yet. Currently GitLab only. GitHub support is on the roadmap.
-
-**Q: 🤔 What if a fix suggestion is wrong?**  
-A: The MR shows the suggestion for human review. Dev can reject and adjust before merge.
-
-**Q: 🌍 Can it handle multiple programming languages?**  
-A: Yes - error diagnosis is language-agnostic. Works for Python, JavaScript, Java, Go, etc.
-
-**Q: 💰 Does it cost money to run?**  
-A: OpenAI API calls cost ~$0.01-0.05 per diagnosis. Host on your server (no SaaS fee).
-
-**Q: 🔒 Can it scan private repositories?**  
-A: Yes, if you provide a token with project access.
-
-**Q: 📤 Is my code sent to OpenAI?**  
-A: Job logs are sent to OpenAI API for LLM analysis. Heuristic mode skips OpenAI calls.
 
 ## 💰 Cost Estimation
 
@@ -648,14 +626,9 @@ Found a bug? Create a GitHub issue with:
 
 Built for hackathons. Use freely for learning and experimentation.
 
-### 📋 License Terms
-- ✅ Free for personal and commercial use
-- ✅ Modify and redistribute
-- ❌ No warranty or liability
-- ✅ Attribution appreciated but not required
-
 ---
 
-**Made with ❤️ for hackathons and DevOps engineers.**  
+**Made with ❤️ ** 
+
 *🚀 Questions? Open an issue or reach out. Enjoy automating your pipelines!*
 
