@@ -13,33 +13,33 @@ Aura AI is a hackathon-ready, production-grade system that runs specialized agen
 
 ## ✨ Key Features
 
-- **Event-Driven Architecture** - Responds to GitLab webhooks in real-time
-- **Pipeline Guardian Agent** - Auto-diagnoses pipeline failures and creates fix branches with merge requests
-- **Extensible Agent Framework** - Built-in support for Compliance, Test Orchestrator, and custom agents
-- **Fast Diagnosis** - Issue classification and fix suggestions in under 2 seconds
-- **Type-Safe** - Full Pydantic models and type hints throughout
-- **Production Ready** - Async task processing, proper logging, signature validation
+- 🌊 **Event-Driven Architecture** - Responds to GitLab webhooks in real-time
+- 🏃 **Pipeline Guardian Agent** - Auto-diagnoses pipeline failures and creates fix branches with merge requests
+- 🔌 **Extensible Agent Framework** - Built-in support for Compliance, Test Orchestrator, and custom agents
+- ⚡ **Fast Diagnosis** - Issue classification and fix suggestions in under 2 seconds
+- ✔️ **Type-Safe** - Full Pydantic models and type hints throughout
+- 🎯 **Production Ready** - Async task processing, proper logging, signature validation
 
 ## 💡 Real-World Use Cases
 
 | Scenario | Benefit |
 |----------|---------|
-| **Pipeline Fails on Missing Import** | Agent auto-creates fix branch + MR with suggested import in under 2 seconds |
-| **Lint Errors Block Merge** | Agent identifies and fixes formatting issues automatically |
-| **Remote Team Timezone Issues** | Agents respond 24/7 - no waiting for on-call engineers |
-| **Recurring Test Failures** | Systems learns patterns and can prevent flaky tests |
-| **Security Scan Detects Secrets** | Compliance agent blocks merge, notifies team, suggests remediation |
-| **Low Coverage on MR** | Test orchestrator can generate missing tests automatically |
+| 🔴 **Pipeline Fails on Missing Import** | Agent auto-creates fix branch + MR with suggested import in under 2 seconds |
+| 🎨 **Lint Errors Block Merge** | Agent identifies and fixes formatting issues automatically |
+| 🌍 **Remote Team Timezone Issues** | Agents respond 24/7 - no waiting for on-call engineers |
+| 🧪 **Recurring Test Failures** | Systems learns patterns and can prevent flaky tests |
+| 🔒 **Security Scan Detects Secrets** | Compliance agent blocks merge, notifies team, suggests remediation |
+| 📊 **Low Coverage on MR** | Test orchestrator can generate missing tests automatically |
 
 ## 🚀 Quick Start (5 minutes)
 
 ### System Requirements
 
-- **OS:** Windows, macOS, or Linux
-- **Python:** 3.9+ (check with `python --version`)
-- **Memory:** 512MB minimum (1GB+ recommended)
-- **Disk:** ~200MB for dependencies
-- **Network:** Outbound HTTPS to GitLab and OpenAI API
+- 💻 **OS:** Windows, macOS, or Linux
+- 🐍 **Python:** 3.9+ (check with `python --version`)
+- 🧠 **Memory:** 512MB minimum (1GB+ recommended)
+- 💾 **Disk:** ~200MB for dependencies
+- 🌐 **Network:** Outbound HTTPS to GitLab and OpenAI API
 
 ### Prerequisites
 - ✅ Python 3.9+
@@ -47,9 +47,9 @@ Aura AI is a hackathon-ready, production-grade system that runs specialized agen
 - ✅ OpenAI API key (for LLM-powered diagnosis)
 - ✅ Git (for webhook testing)
 
-### 1. Setup
+### 1️⃣ Setup
 
-**Clone and install dependencies:**
+**📦 Clone and install dependencies:**
 ```bash
 # Create virtual environment
 python -m venv venv
@@ -61,7 +61,7 @@ venv\Scripts\activate  # Windows
 pip install -r requirements.txt
 ```
 
-**Configure environment:**
+**⚙️ Configure environment:**
 ```bash
 cp .env.example .env
 ```
@@ -75,14 +75,14 @@ OPENAI_API_KEY=sk-XXXXXXXXXXXXX         # Get from https://platform.openai.com/k
 LOG_LEVEL=INFO
 ```
 
-### 2. Run Server
+### 2️⃣ Run Server
 
-**Option A: Direct Python**
+**Option A: 🐍 Direct Python**
 ```bash
 python -m src.main
 ```
 
-**Option B: Quick start script**
+**Option B: 🚀 Quick start script**
 ```bash
 ./run.sh          # macOS/Linux
 run.bat           # Windows
@@ -96,19 +96,19 @@ INFO:     Application startup complete
 
 Server is now running on `http://localhost:8000` ✅
 
-### 3. Test Locally
+### 3️⃣ Test Locally
 
-**Verify server is running:**
+**✅ Verify server is running:**
 ```bash
 curl http://localhost:8000/health
 ```
 
-**Trigger a test pipeline failure:**
+**🔥 Trigger a test pipeline failure:**
 ```bash
 curl -X POST http://localhost:8000/api/test/trigger-pipeline-failure
 ```
 
-**Expected output in logs:**
+**📋 Expected output in logs:**
 ```
 INFO - Received webhook event: pipeline_failure
 INFO - [PipelineGuardianAgent] Processing pipeline failure
@@ -254,13 +254,13 @@ aura-ai/
 
 | Component | Technology |
 |-----------|-----------|
-| **Framework** | FastAPI (Python) |
-| **Server** | Uvicorn (ASGI) |
-| **Validation** | Pydantic + Python typing |
-| **Job Queue** | Background tasks (async) |
-| **AI/LLM** | OpenAI API (gpt-4 or gpt-3.5-turbo) |
-| **API Integration** | GitLab REST API |
-| **Testing** | pytest |
+| 🐍 **Framework** | FastAPI (Python) |
+| 🏗️ **Server** | Uvicorn (ASGI) |
+| ✅ **Validation** | Pydantic + Python typing |
+| ⚙️ **Job Queue** | Background tasks (async) |
+| 🤖 **AI/LLM** | OpenAI API (gpt-4 or gpt-3.5-turbo) |
+| 🌐 **API Integration** | GitLab REST API |
+| 🔬 **Testing** | pytest |
 
 ## 📖 Documentation
 
@@ -271,28 +271,28 @@ aura-ai/
 
 ## 🔐 Environment Configuration
 
-### Required Variables
+### ✅ Required Variables
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `GITLAB_URL` | GitLab instance URL | `https://gitlab.com` or `https://gitlab.company.com` |
-| `GITLAB_TOKEN` | Personal access token | `glpat-XXXXXXXXXXXXX` |
-| `GITLAB_WEBHOOK_SECRET` | Webhook signature secret | `your-random-secret-32-chars` |
-| `OPENAI_API_KEY` | OpenAI API key | `sk-XXXXXXXXXXXXX` |
+| 📝 `GITLAB_URL` | GitLab instance URL | `https://gitlab.com` or `https://gitlab.company.com` |
+| 🔐 `GITLAB_TOKEN` | Personal access token | `glpat-XXXXXXXXXXXXX` |
+| 🔑 `GITLAB_WEBHOOK_SECRET` | Webhook signature secret | `your-random-secret-32-chars` |
+| 🤖 `OPENAI_API_KEY` | OpenAI API key | `sk-XXXXXXXXXXXXX` |
 
-### Optional Variables
+### 🌙 Optional Variables
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `LOG_LEVEL` | `INFO` | Logging level: DEBUG, INFO, WARNING, ERROR |
-| `PORT` | `8000` | Server port |
-| `WORKERS` | `1` | Number of Uvicorn workers |
-| `GITLAB_PROJECT_ID` | Auto-detect | Specific GitLab project to monitor |
+| 📊 `LOG_LEVEL` | `INFO` | Logging level: DEBUG, INFO, WARNING, ERROR |
+| 🚪 `PORT` | `8000` | Server port |
+| 👷 `WORKERS` | `1` | Number of Uvicorn workers |
+| 📂 `GITLAB_PROJECT_ID` | Auto-detect | Specific GitLab project to monitor |
 
-### Generate Webhook Secret
+### 📝 Generate Webhook Secret
 
 ```bash
-# macOS/Linux
+# 🐧 macOS/Linux
 openssl rand -hex 32
 
 # Windows PowerShell
@@ -301,105 +301,105 @@ openssl rand -hex 32
 
 ## 🔐 GitLab Configuration
 
-### Step 1: Create Personal Access Token
+### 1️⃣ Create Personal Access Token
 
-1. Go to **GitLab** → Settings → Access Tokens
-2. Enter name: `aura-ai` or similar
-3. Select expiration (e.g., 90 days)
-4. Check required scopes:
-   - ✅ `api` - Full API access
-   - ✅ `read_api` - Read repository data
-   - ✅ `write_repository` - Create branches and MRs
-5. Click **Create Personal Access Token**
-6. Copy token immediately (won't show again)
-7. Paste into `.env` as `GITLAB_TOKEN`
+1. 🌐 Go to **GitLab** → Settings → Access Tokens
+2. 📝 Enter name: `aura-ai` or similar
+3. ⏰ Select expiration (e.g., 90 days)
+4. ✅ Check required scopes:
+   - ✅ 📡 `api` - Full API access
+   - ✅ 📖 `read_api` - Read repository data
+   - ✅ 🖊️ `write_repository` - Create branches and MRs
+5. 🎯 Click **Create Personal Access Token**
+6. 📋 Copy token immediately (won't show again)
+7. 📌 Paste into `.env` as `GITLAB_TOKEN`
 
-### Step 2: Add Webhook to Project
+### 2️⃣ Add Webhook to Project
 
-1. Go to Project → Settings → Webhooks
-2. Fill in webhook details:
-   - **URL:** `https://your-server.com/webhooks/gitlab`
-   - **Secret Token:** Generate random string (use the command above)
-   - **Trigger Events:** Check these:
-     - ✅ Pipeline events
-     - ✅ Merge request events
-     - ✅ Push events
-   - ✅ SSL verification: Enabled (for production)
-3. Add webhook
+1. 📂 Go to Project → Settings → Webhooks
+2. 📝 Fill in webhook details:
+   - 🔗 **URL:** `https://your-server.com/webhooks/gitlab`
+   - 🔐 **Secret Token:** Generate random string (use the command above)
+   - 📡 **Trigger Events:** Check these:
+     - ✅ ⚙️ Pipeline events
+     - ✅ 🔃 Merge request events
+     - ✅ 📤 Push events
+   - ✅ 🔒 SSL verification: Enabled (for production)
+3. ➕ Add webhook
 
-### Step 3: Test Connection
+### 3️⃣ Test Connection
 
-1. Go to webhook → Recent deliveries
-2. Should see POST request responses
-3. Check Aura AI server logs for webhook receipt:
+1. 📊 Go to webhook → Recent deliveries
+2. 👁 Should see POST request responses
+3. 📋 Check Aura AI server logs for webhook receipt:
    ```
    INFO - Webhook received from GitLab
    INFO - Processing pipeline_failure event
    ```
 
-### Step 4: Trigger First Agent Run
+### 4️⃣ Trigger First Agent Run
 
-Push a failing commit:
+🚀 Push a failing commit:
 ```bash
 git push origin test-branch
 ```
 
-Monitor logs for agent execution. First run usually takes 3-5 seconds to diagnose and create MR.
+⏱️ Monitor logs for agent execution. First run usually takes 3-5 seconds to diagnose and create MR.
 
 ## 🛡️ Security Considerations
 
-### For Production Deployment
+### ✅ For Production Deployment
 
-- ✅ **Use HTTPS only** - Never expose webhook URL over HTTP
-- ✅ **Validate webhook signatures** - Enabled by default  
-- ✅ **Rotate tokens regularly** - GitLab recommends 90 days
-- ✅ **Limit token scope** - Only grant `api`, `read_api`, `write_repository`
-- ✅ **Use environment secrets** - Never commit `.env` to Git
-- ✅ **Audit agent actions** - Review auto-created MRs before merge
-- ✅ **Rate limit** - Aura AI respects GitLab rate limits
+- 🔐 **Use HTTPS only** - Never expose webhook URL over HTTP
+- 🔍 **Validate webhook signatures** - Enabled by default  
+- 🔄 **Rotate tokens regularly** - GitLab recommends 90 days
+- 🎯 **Limit token scope** - Only grant `api`, `read_api`, `write_repository`
+- 📦 **Use environment secrets** - Never commit `.env` to Git
+- 📊 **Audit agent actions** - Review auto-created MRs before merge
+- ⏱️ **Rate limit** - Aura AI respects GitLab rate limits
 
-### What Not to Store in `.env`
+### 🚫 What Not to Store in `.env`
 
-❌ Private keys or SSH keys  
-❌ Database credentials (unless encrypted)  
-❌ Multiple service tokens (use dedicated service accounts)
+❌ 🔑 Private keys or SSH keys  
+❌ 🗝️ Database credentials (unless encrypted)  
+❌ 🎫 Multiple service tokens (use dedicated service accounts)
 
-### Approval Workflows
+### ✋ Approval Workflows
 
 For safety, require:
-- Manual review before merge of agent-created MRs
-- Approval from 1+ team members
-- CI/CD to pass before merge
+- 👁️ Manual review before merge of agent-created MRs
+- 🤝 Approval from 1+ team members
+- ✅ CI/CD to pass before merge
 
 ## 🎬 Demo Script (5 minutes)
 
-### Step 1: Start the Server
+### 🚀 Step 1: Start the Server
 ```bash
 python -m src.main
 ```
 
-### Step 2: Trigger a Failure
+### 💥 Step 2: Trigger a Failure
 ```bash
 git push origin test-branch
 ```
 (The branch should have code that fails tests/lint checks)
 
-### Step 3: Monitor Agent Response
+### 👀 Step 3: Monitor Agent Response
 
-Check logs for:
+🗂️ Check logs for:
 ```
 INFO:src.agents.pipeline_guardian:Processing pipeline failure
 INFO:src.agents.pipeline_guardian:Diagnosis: test_failure - Unit test assertion failed
 ```
 
-### Step 4: Verify Results
+### ✅ Step 4: Verify Results
 
-- Refresh GitLab project
-- See auto-created branch `fix/test`
-- Check MR with diagnosis and fix suggestion
-- Commit status updated with results
+- 🔄 Refresh GitLab project
+- 📌 See auto-created branch `fix/test`
+- 📝 Check MR with diagnosis and fix suggestion
+- ✔️ Commit status updated with results
 
-### Key Talking Points
+### 💡 Key Talking Points
 - ⚡ **Speed:** Agent diagnoses and creates MR in under 2 seconds
 - 🎯 **Context:** Full diagnosis included in MR description
 - 📈 **Scale:** Works on any pipeline failure type
@@ -407,30 +407,30 @@ INFO:src.agents.pipeline_guardian:Diagnosis: test_failure - Unit test assertion 
 
 ## 🧪 API Endpoints & Testing
 
-### REST API Endpoints
+### 🌐 REST API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/health` | GET | Server health check |
-| `/api/test/trigger-pipeline-failure` | POST | Trigger demo pipeline failure event |
-| `/webhooks/gitlab` | POST | GitLab webhook receiver (auto-invoked by GitLab) |
+| 💚 `/health` | GET | Server health check |
+| 🚀 `/api/test/trigger-pipeline-failure` | POST | Trigger demo pipeline failure event |
+| 📨 `/webhooks/gitlab` | POST | GitLab webhook receiver (auto-invoked by GitLab) |
 
-### Unit Tests
+### 📋 Unit Tests
 
 ```bash
-# Run all tests
+# 🧪 Run all tests
 pytest tests/
 
-# Run specific test file
+# 🎯 Run specific test file
 pytest tests/test_agents.py -v
 
-# Run with coverage report
+# 📊 Run with coverage report
 pytest --cov=src tests/
 ```
 
-### Manual Testing
+### 🔧 Manual Testing
 
-**Verify server is running:**
+**✅ Verify server is running:**
 ```bash
 curl -v http://localhost:8000/health
 ```
@@ -440,13 +440,13 @@ Expected response:
 {"status": "healthy", "timestamp": "2026-03-20T10:00:00Z"}
 ```
 
-**Trigger test pipeline failure:**
+**🔥 Trigger test pipeline failure:**
 ```bash
 curl -X POST http://localhost:8000/api/test/trigger-pipeline-failure \
   -H "Content-Type: application/json"
 ```
 
-Watch logs for:
+👀 Watch logs for:
 ```
 INFO - [PipelineGuardianAgent] Processing pipeline failure
 INFO - Diagnosis: import_error - Missing module 'requests'  
@@ -456,39 +456,39 @@ INFO - Opening MR with diagnosis
 
 ## � Performance & Metrics
 
-### Benchmarks (Agent Response Times)
+### ⚡ Benchmarks (Agent Response Times)
 
 | Operation | Time | Notes |
 |-----------|------|-------|
-| **Receive webhook** | <50ms | GitLab → Aura AI |
-| **Parse job log** | 400-600ms | Depends on log size (10KB avg) |
-| **Diagnose issue** | 200-400ms | Pattern matching + LLM call |
-| **Create branch** | 300-500ms | GitLab API call |
-| **Create MR** | 400-600ms | GitLab API call + MR setup |
-| **Total E2E** | 1.5-2.5s | Diagnosis + MR creation |
+| 📥 **Receive webhook** | <50ms | GitLab → Aura AI |
+| 📖 **Parse job log** | 400-600ms | Depends on log size (10KB avg) |
+| 🔍 **Diagnose issue** | 200-400ms | Pattern matching + LLM call |
+| 🌳 **Create branch** | 300-500ms | GitLab API call |
+| 📝 **Create MR** | 400-600ms | GitLab API call + MR setup |
+| ✨ **Total E2E** | 1.5-2.5s | Diagnosis + MR creation |
 
-### Scalability
+### 📊 Scalability
 
-- **Concurrent Events:** Handles 100+ webhooks/minute
-- **Mem Usage:** ~150MB baseline, +50MB per active agent
-- **CPU:** <1 core for typical workload
-- **Network:** Rate-limited by GitLab (600 req/min for free tier)
+- 🔄 **Concurrent Events:** Handles 100+ webhooks/minute
+- 💾 **Mem Usage:** ~150MB baseline, +50MB per active agent
+- ⚙️ **CPU:** <1 core for typical workload
+- 🚦 **Network:** Rate-limited by GitLab (600 req/min for free tier)
 
 ## ❓ Troubleshooting
 
-### Common Issues
+### 🐛 Common Issues
 
 | Issue | Solution |
 |-------|----------|
-| **"Invalid signature" error** | Ensure webhook secret is added to `.env` and GitLab webhook settings match |
-| **Agent not executing** | Verify `GITLAB_TOKEN` is valid, check project permissions, review server logs |
-| **MR not created** | Verify target branch exists, check token has `write_repository` scope |
-| **Connection timeout** | Ensure server URL is publicly accessible and firewall allows inbound traffic |
-| **"Permission denied" creating branch** | Token scope missing `write_repository` - regenerate with full scopes |
-| **"Project not found"** | Verify GITLAB_URL matches your instance, check project ID in webhook payload |
-| **"OpenAI rate limit"** | Reduce concurrency or upgrade OpenAI plan; see logs for details |
+| ❌ **"Invalid signature" error** | Ensure webhook secret is added to `.env` and GitLab webhook settings match |
+| 🤷 **Agent not executing** | Verify `GITLAB_TOKEN` is valid, check project permissions, review server logs |
+| 📋 **MR not created** | Verify target branch exists, check token has `write_repository` scope |
+| 🌐 **Connection timeout** | Ensure server URL is publicly accessible and firewall allows inbound traffic |
+| 🔒 **"Permission denied" creating branch** | Token scope missing `write_repository` - regenerate with full scopes |
+| 📂 **"Project not found"** | Verify GITLAB_URL matches your instance, check project ID in webhook payload |
+| 📊 **"OpenAI rate limit"** | Reduce concurrency or upgrade OpenAI plan; see logs for details |
 
-### Debug Mode
+### 🔧 Debug Mode
 
 Enable detailed logging:
 ```bash
@@ -496,113 +496,113 @@ LOG_LEVEL=DEBUG python -m src.main
 ```
 
 This shows:
-- All webhook events received
-- Agent decision logic
-- GitLab API requests/responses
-- Error stack traces
+- 📥 All webhook events received
+- 🤖 Agent decision logic
+- 🌐 GitLab API requests/responses
+- 📋 Error stack traces
 
-### Check Server Health
+### ✅ Check Server Health
 
 ```bash
-# Verify server is running
+# ✔️ Verify server is running
 curl -i http://localhost:8000/health
 
-# Check logs
+# 📊 Check logs
 tail -f /tmp/aura-ai.log
 
-# Test webhook connectivity (from GitLab project)
+# 🔗 Test webhook connectivity (from GitLab project)
 Project → Settings → Webhooks → [webhook] → Recent Deliveries
 ```
 
 ## 📚 Limitations & Known Issues
 
-### Current Limitations
+### ⚠️ Current Limitations
 
 | Limitation | Workaround | Priority |
 |-----------|-----------|----------|
-| **Single project only** | Redeploy separate instances per project | Medium |
-| **Heuristic-based diagnosis** | Add real LLM integration for higher accuracy | High |
-| **No persistent history** | Add database + dashboard for audit trail | Medium |
-| **No approval workflows** | Requires manual MR review | High |
-| **Git operations only** | Extend to support Gerrit, GitHub, Bitbucket | Low |
+| 📂 **Single project only** | Redeploy separate instances per project | Medium |
+| 🎯 **Heuristic-based diagnosis** | Add real LLM integration for higher accuracy | High |
+| 💾 **No persistent history** | Add database + dashboard for audit trail | Medium |
+| 👁️ **No approval workflows** | Requires manual MR review | High |
+| 🔧 **Git operations only** | Extend to support Gerrit, GitHub, Bitbucket | Low |
 
-### Known Issues
+### 🔧 Known Issues
 
-- 🔧 **Log parsing edge cases** - Some ANSI color codes cause parse failures (fix: filter ANSI)
-- 🔧 **Rate limit on large projects** - 500+ job logs hit GitLab API limits (fix: batch requests)
-- 🔧 **Webhook timeout > 10s** - GitLab webhook delivery fails if agent takes > 10 seconds
-- 🔧 **Private GitLab instances** - Self-signed certs fail validation (workaround: disable in dev)
-- 🔧 **OpenAI context limit** - Very long logs may exceed token limit (fix: truncate logs)
+- 🎨 **Log parsing edge cases** - Some ANSI color codes cause parse failures (fix: filter ANSI)
+- 📊 **Rate limit on large projects** - 500+ job logs hit GitLab API limits (fix: batch requests)
+- ⏱️ **Webhook timeout > 10s** - GitLab webhook delivery fails if agent takes > 10 seconds
+- 🔒 **Private GitLab instances** - Self-signed certs fail validation (workaround: disable in dev)
+- 🧠 **OpenAI context limit** - Very long logs may exceed token limit (fix: truncate logs)
 
 ## ❓ FAQ
 
-**Q: Can Aura AI modify production code directly?**  
+**Q: 🔐 Can Aura AI modify production code directly?**  
 A: No. Aura AI only creates branches and opens MRs. Humans must review and approve all changes before merge.
 
-**Q: Does it work with GitHub?**  
+**Q: 🐙 Does it work with GitHub?**  
 A: Not yet. Currently GitLab only. GitHub support is on the roadmap.
 
-**Q: What if a fix suggestion is wrong?**  
+**Q: 🤔 What if a fix suggestion is wrong?**  
 A: The MR shows the suggestion for human review. Dev can reject and adjust before merge.
 
-**Q: Can it handle multiple programming languages?**  
+**Q: 🌍 Can it handle multiple programming languages?**  
 A: Yes - error diagnosis is language-agnostic. Works for Python, JavaScript, Java, Go, etc.
 
-**Q: Does it cost money to run?**  
+**Q: 💰 Does it cost money to run?**  
 A: OpenAI API calls cost ~$0.01-0.05 per diagnosis. Host on your server (no SaaS fee).
 
-**Q: Can it scan private repositories?**  
+**Q: 🔒 Can it scan private repositories?**  
 A: Yes, if you provide a token with project access.
 
-**Q: Is my code sent to OpenAI?**  
+**Q: 📤 Is my code sent to OpenAI?**  
 A: Job logs are sent to OpenAI API for LLM analysis. Heuristic mode skips OpenAI calls.
 
 ## 💰 Cost Estimation
 
 | Service | Est. Cost/Month | Notes |
 |---------|--------|-------|
-| **OpenAI API** | $5-50 | ~500-5000 diagnoses × $0.01 |
-| **Server Hosting** | $5-50 | VPS (AWS t2.micro free tier works) |
-| **GitLab** | Free | Free tier sufficient |
-| **Total** | $10-100 | Scales with team size |
+| 🤖 **OpenAI API** | $5-50 | ~500-5000 diagnoses × $0.01 |
+| 🖥️ **Server Hosting** | $5-50 | VPS (AWS t2.micro free tier works) |
+| 🦊 **GitLab** | Free | Free tier sufficient |
+| 💵 **Total** | $10-100 | Scales with team size |
 
 ## 🛣️ Detailed Roadmap
 
 ### Phase 1: MVP ✅ (COMPLETE)
-- [x] Pipeline Guardian Agent
-- [x] Basic error classification
-- [x] MR creation workflow
-- [x] GitLab integration
+- [x] 🤖 Pipeline Guardian Agent
+- [x] 🎯 Basic error classification
+- [x] 📝 MR creation workflow
+- [x] 🔗 GitLab integration
 
 ### Phase 2: Q2 2026 (Next)
-- [ ] Real LLM integration (better diagnosis accuracy)
-- [ ] Database + dashboard (audit history)
-- [ ] Compliance Agent (secrets, CVE, PII scanning)
-- [ ] Test Orchestrator (auto-generate tests)
+- [ ] 🧠 Real LLM integration (better diagnosis accuracy)
+- [ ] 💾 Database + dashboard (audit history)
+- [ ] 🔐 Compliance Agent (secrets, CVE, PII scanning)
+- [ ] 🧪 Test Orchestrator (auto-generate tests)
 
 ### Phase 3: Q3 2026
-- [ ] GitHub support
-- [ ] Human approval workflows
-- [ ] Metrics & analytics dashboard
-- [ ] Slack/Teams notifications
+- [ ] 🐙 GitHub support
+- [ ] 👁️ Human approval workflows
+- [ ] 📊 Metrics & analytics dashboard
+- [ ] 💬 Slack/Teams notifications
 
 ### Phase 4: Q4 2026 (Future)
-- [ ] Multi-project management
-- [ ] Custom agent framework (users write plugins)
-- [ ] Federated agents (distributed execution)
-- [ ] Enterprise features (RBAC, audit logging)
+- [ ] 📂 Multi-project management
+- [ ] 🔧 Custom agent framework (users write plugins)
+- [ ] 🌐 Federated agents (distributed execution)
+- [ ] 🏢 Enterprise features (RBAC, audit logging)
 
 ## 🤝 Contributing
 
 We welcome contributions! Here's how:
 
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
+1. 🍴 **Fork** the repository
+2. 🌿 **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. 💾 **Commit** changes (`git commit -m 'Add amazing feature'`)
+4. 📤 **Push** to branch (`git push origin feature/amazing-feature`)
+5. 🎯 **Open** a Pull Request
 
-### Development Setup
+### 💻 Development Setup
 
 ```bash
 git clone https://github.com/yourusername/aura-ai.git
@@ -613,42 +613,42 @@ pip install -r requirements.txt
 pytest tests/
 ```
 
-### Code Standards
+### 📝 Code Standards
 
-- Python 3.9+
-- PEP 8 style
-- Type hints required
-- Test coverage > 70%
-- Docstrings for all functions
+- 🐍 Python 3.9+
+- 📏 PEP 8 style
+- 📌 Type hints required
+- 🧪 Test coverage > 70%
+- 📚 Docstrings for all functions
 
-### Report Issues
+### 🐛 Report Issues
 
 Found a bug? Create a GitHub issue with:
-- Description of the problem
-- Steps to reproduce
-- Expected vs. actual behavior
-- Server logs (with sensitive info redacted)
+- 📝 Description of the problem
+- 👣 Steps to reproduce
+- 📊 Expected vs. actual behavior
+- 🔍 Server logs (with sensitive info redacted)
 
 ## 📞 Getting Help
 
-### Questions?
+### 🤔 Questions?
 
 - 📖 **Read Docs:** [SETUP.md](SETUP.md), [START_HERE.md](START_HERE.md)
 - 💬 **GitHub Discussions:** Ask community questions
 - 🐛 **GitHub Issues:** Report bugs and request features
 - 📧 **Email:** Included in project (for urgent issues)
 
-### Community
+### 🌍 Community
 
-- Star the repo if you find it useful ⭐
-- Share feedback and suggestions
-- Contribute code or documentation
+- ⭐ Star the repo if you find it useful ⭐
+- 💭 Share feedback and suggestions
+- 🚀 Contribute code or documentation
 
 ## 📝 License
 
 Built for hackathons. Use freely for learning and experimentation.
 
-### License Terms
+### 📋 License Terms
 - ✅ Free for personal and commercial use
 - ✅ Modify and redistribute
 - ❌ No warranty or liability
@@ -657,5 +657,5 @@ Built for hackathons. Use freely for learning and experimentation.
 ---
 
 **Made with ❤️ for hackathons and DevOps engineers.**  
-*Questions? Open an issue or reach out. Enjoy automating your pipelines!*
+*🚀 Questions? Open an issue or reach out. Enjoy automating your pipelines!*
 
