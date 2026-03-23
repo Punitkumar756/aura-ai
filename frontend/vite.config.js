@@ -1,0 +1,29 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+// https://vitejs.dev/config/
+export default defineConfig({
+    plugins: [react()],
+    resolve: {
+        alias: {
+            '@': '/src',
+        },
+    },
+    server: {
+        port: 5173,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8000',
+                changeOrigin: true,
+                rewrite: function (path) { return path.replace(/^\/api/, '/api'); }
+            },
+            '/webhooks': {
+                target: 'http://localhost:8000',
+                changeOrigin: true
+            },
+            '/health': {
+                target: 'http://localhost:8000',
+                changeOrigin: true
+            }
+        }
+    }
+});

@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Status](https://img.shields.io/badge/Status-Hackathon%20Ready-brightgreen.svg)
 
-> **Autonomous agent framework that detects GitLab events and intelligently responds with automated fixes, compliance checks, and test generation.**
+> **Autonomous agent framework that detects GitLab even ts and intelligently responds with automated fixes, compliance checks, and test generation.**
 
 Aura AI is a hackathon-ready, production-grade system that runs specialized agents in response to GitLab pipeline failures, security events, and merge requests. Each agent diagnoses issues and takes autonomous action via the GitLab API.
 
@@ -117,6 +117,31 @@ INFO - Creating fix branch: fix/import-requests
 ```
 
 👉 See [SETUP.md](SETUP.md) for advanced configuration and deployment options.
+
+## 🎨 Dashboard Frontend (NEW!)
+
+Aura AI now includes a **beautiful, real-time monitoring dashboard** built with React + TypeScript + TailwindCSS.
+
+### Dashboard Features
+- 📊 **Real-time Monitoring** - See agent status and failures as they happen
+- 🎯 **Quick Stats** - Failures today, diagnosis time, success rate at a glance
+- 📋 **Event Log** - Browse all pipeline failures with filtering
+- 📈 **Analytics** - Charts showing trends in failures and MTTR improvement
+- 🛠️ **Responsive Design** - Works on desktop, tablet, and mobile
+- 🌙 **Dark Mode Support** - Modern dark theme for 24/7 operations
+
+### Quick Dashboard Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Dashboard opens at **http://localhost:5173** with automatic proxy to backend API.
+
+📚 See [SETUP_FRONTEND.md](SETUP_FRONTEND.md) for detailed frontend setup
+📚 See [FRONTEND_GUIDE.md](FRONTEND_GUIDE.md) for complete feature breakdown
 
 ## 🏗️ Architecture Overview
 
@@ -534,28 +559,6 @@ Project → Settings → Webhooks → [webhook] → Recent Deliveries
 - 🔒 **Private GitLab instances** - Self-signed certs fail validation (workaround: disable in dev)
 - 🧠 **OpenAI context limit** - Very long logs may exceed token limit (fix: truncate logs)
 
-## ❓ FAQ
-
-**Q: 🔐 Can Aura AI modify production code directly?**  
-A: No. Aura AI only creates branches and opens MRs. Humans must review and approve all changes before merge.
-
-**Q: 🐙 Does it work with GitHub?**  
-A: Not yet. Currently GitLab only. GitHub support is on the roadmap.
-
-**Q: 🤔 What if a fix suggestion is wrong?**  
-A: The MR shows the suggestion for human review. Dev can reject and adjust before merge.
-
-**Q: 🌍 Can it handle multiple programming languages?**  
-A: Yes - error diagnosis is language-agnostic. Works for Python, JavaScript, Java, Go, etc.
-
-**Q: 💰 Does it cost money to run?**  
-A: OpenAI API calls cost ~$0.01-0.05 per diagnosis. Host on your server (no SaaS fee).
-
-**Q: 🔒 Can it scan private repositories?**  
-A: Yes, if you provide a token with project access.
-
-**Q: 📤 Is my code sent to OpenAI?**  
-A: Job logs are sent to OpenAI API for LLM analysis. Heuristic mode skips OpenAI calls.
 
 ## 💰 Cost Estimation
 
@@ -656,6 +659,4 @@ Built for hackathons. Use freely for learning and experimentation.
 
 ---
 
-**Made with ❤️ for hackathons and DevOps engineers.**  
-*🚀 Questions? Open an issue or reach out. Enjoy automating your pipelines!*
-
+**Made with ❤️ **  
