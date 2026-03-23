@@ -651,12 +651,6 @@ Found a bug? Create a GitHub issue with:
 
 Built for hackathons. Use freely for learning and experimentation.
 
-### 📋 License Terms
-- ✅ Free for personal and commercial use
-- ✅ Modify and redistribute
-- ❌ No warranty or liability
-- ✅ Attribution appreciated but not required
-
 ---
 
-**Made with ❤️ **  
+
