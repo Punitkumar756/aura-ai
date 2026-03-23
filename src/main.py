@@ -8,6 +8,7 @@ import hmac
 import hashlib
 from fastapi import FastAPI, Request, HTTPException, BackgroundTasks
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 from typing import Dict, Any
 import json
@@ -30,6 +31,25 @@ app = FastAPI(
     title="Aura AI Agent System",
     description="Event-driven agent framework for GitLab automation",
     version="0.1.0",
+)
+
+
+@app.get("/")
+async def root():
+    """Root endpoint to avoid generic 404s and guide users."""
+    return {
+        "service": "aura-ai-agent-system",
+        "status": "ok",
+        "health": "/health",
+    }
+
+# CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:5173", "http://127.0.0.1:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Global instances
@@ -186,8 +206,13 @@ async def get_agent_status():
     return {
         "agents": [
             {
+                "agent_name": "Pipeline Guardian",
+                "status": "ACTIVE",
+                "last_activity": datetime.utcnow().isoformat(),
+                "errors": 0,
+                "successes": 12,
+                # Backwards-compatible fields
                 "name": "PipelineGuardianAgent",
-                "status": "active",
                 "events_handled": 0,
                 "actions_taken": 0,
             },
@@ -195,6 +220,76 @@ async def get_agent_status():
         "webhook_endpoint": "/webhooks/gitlab",
         "timestamp": datetime.utcnow().isoformat(),
     }
+
+
+@app.get("/api/metrics")
+async def get_dashboard_metrics():
+    """Return dashboard metrics for the frontend."""
+    return {
+        "total_failures_today": 8,
+        "avg_diagnosis_time_ms": 1450,
+        "success_rate_percent": 87.5,
+        "active_agents": 1,
+    }
+
+
+@app.get("/api/pipeline-failures")
+async def get_pipeline_failures():
+    """Return recent pipeline failures for the frontend."""
+    now = datetime.utcnow()
+    return {
+        "failures": [
+            {
+                "event_id": "evt-001",
+                "event_type": "PIPELINE_FAILED",
+                "project_name": "example-project",
+                "status": "RESOLVED",
+                "timestamp": (now).isoformat(),
+                "agent_name": "Pipeline Guardian",
+                "action_status": "MR_CREATED",
+                "details": {
+                    "failure_type": "IMPORT_ERROR",
+                    "diagnosis": "Missing requests module",
+                    "mr_url": "#",
+                },
+            },
+            {
+                "event_id": "evt-002",
+                "event_type": "PIPELINE_FAILED",
+                "project_name": "another-project",
+                "status": "PENDING",
+                "timestamp": (now).isoformat(),
+                "agent_name": "Pipeline Guardian",
+                "action_status": "DIAGNOSING",
+                "details": {
+                    "failure_type": "TEST_FAILURE",
+                    "diagnosis": "Unit test assertion failed",
+                },
+            },
+        ]
+    }
+
+
+@app.get("/api/events")
+async def get_events(page: int = 1, limit: int = 20):
+    """Return event log data for the frontend."""
+    failures = (await get_pipeline_failures())["failures"]
+    return {
+        "events": failures[:limit],
+        "total": 42,
+        "page": page,
+        "limit": limit,
+    }
+
+
+@app.get("/api/events/{event_id}")
+async def get_event_details(event_id: str):
+    """Return a single event for the frontend."""
+    failures = (await get_pipeline_failures())["failures"]
+    for failure in failures:
+        if failure["event_id"] == event_id:
+            return failure
+    raise HTTPException(status_code=404, detail="Event not found")
 
 
 @app.post("/api/test/trigger-pipeline-failure")

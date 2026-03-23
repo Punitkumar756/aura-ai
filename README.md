@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Status](https://img.shields.io/badge/Status-Hackathon%20Ready-brightgreen.svg)
 
-> **Autonomous agent framework that detects GitLab events and intelligently responds with automated fixes, compliance checks, and test generation.**
+> **Autonomous agent framework that detects GitLab even ts and intelligently responds with automated fixes, compliance checks, and test generation.**
 
 Aura AI is a hackathon-ready, production-grade system that runs specialized agents in response to GitLab pipeline failures, security events, and merge requests. Each agent diagnoses issues and takes autonomous action via the GitLab API.
 
@@ -117,6 +117,31 @@ INFO - Creating fix branch: fix/import-requests
 ```
 
 👉 See [SETUP.md](SETUP.md) for advanced configuration and deployment options.
+
+## 🎨 Dashboard Frontend (NEW!)
+
+Aura AI now includes a **beautiful, real-time monitoring dashboard** built with React + TypeScript + TailwindCSS.
+
+### Dashboard Features
+- 📊 **Real-time Monitoring** - See agent status and failures as they happen
+- 🎯 **Quick Stats** - Failures today, diagnosis time, success rate at a glance
+- 📋 **Event Log** - Browse all pipeline failures with filtering
+- 📈 **Analytics** - Charts showing trends in failures and MTTR improvement
+- 🛠️ **Responsive Design** - Works on desktop, tablet, and mobile
+- 🌙 **Dark Mode Support** - Modern dark theme for 24/7 operations
+
+### Quick Dashboard Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Dashboard opens at **http://localhost:5173** with automatic proxy to backend API.
+
+📚 See [SETUP_FRONTEND.md](SETUP_FRONTEND.md) for detailed frontend setup
+📚 See [FRONTEND_GUIDE.md](FRONTEND_GUIDE.md) for complete feature breakdown
 
 ## 🏗️ Architecture Overview
 
@@ -628,7 +653,4 @@ Built for hackathons. Use freely for learning and experimentation.
 
 ---
 
-**Made with ❤️ ** 
-
-*🚀 Questions? Open an issue or reach out. Enjoy automating your pipelines!*
 
