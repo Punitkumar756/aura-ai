@@ -1,13 +1,81 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aura AI Dashboard</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <link rel="stylesheet" href="css/simple.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>🤖 Aura AI</h1>
+                <p class="subtitle">Agent Monitoring Dashboard</p>
+            </div>
+            <div class="header-right">
+                <span id="status" class="status-badge online">● Online</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Quick Stats -->
+            <section class="stats-section">
+                <div class="stat">
+                    <div class="stat-label">Failures</div>
+                    <div class="stat-value" id="stat-failures">--</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Resolved</div>
+                    <div class="stat-value" id="stat-resolved">--</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Active Agents</div>
+                    <div class="stat-value" id="stat-agents">--</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Success Rate</div>
+                    <div class="stat-value" id="stat-success">--</div>
+                </div>
+            </section>
+
+            <!-- Live Data Sections -->
+            <div class="grid">
+                <!-- Section 1: Recent Failures -->
+                <section class="card">
+                    <h2>Recent Pipeline Failures</h2>
+                    <div id="failures" class="list"></div>
+                </section>
+
+                <!-- Section 2: Active Agents -->
+                <section class="card">
+                    <h2>Agent Status</h2>
+                    <div id="agents" class="list"></div>
+                </section>
+            </div>
+
+            <!-- Section 3: Latest Decision -->
+            <section class="card full-width">
+                <h2>Latest Agent Decision</h2>
+                <div id="decision" class="decision-box"></div>
+            </section>
+
+            <!-- Test Button -->
+            <section class="card full-width">
+                <h2>Testing</h2>
+                <p style="margin-bottom: 1rem; color: #666;">Trigger a test pipeline failure to see agents in action:</p>
+                <button id="test-btn" class="btn">Trigger Test Failure</button>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Backend API: <span id="api-url">http://localhost:8000</span> | Auto-refresh: Every 3 seconds</p>
+        </footer>
+    </div>
+
+    <script src="js/simple.js"></script>
+</body>
 </html>

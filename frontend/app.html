@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura AI - Agent Control Panel</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+</head>
+<body>
+    <div id="app" class="app">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>🤖 Aura AI</h1>
+                <p>Agent Control Panel</p>
+            </div>
+            
+            <ul class="nav-list">
+                <li><a href="#dashboard" class="nav-link active" data-page="dashboard">📊 Dashboard</a></li>
+                <li><a href="#failures" class="nav-link" data-page="failures">🔴 Pipeline Failures</a></li>
+                <li><a href="#events" class="nav-link" data-page="events">📋 Events Log</a></li>
+                <li><a href="#agents" class="nav-link" data-page="agents">🤖 Agent Status</a></li>
+                <li><a href="#settings" class="nav-link" data-page="settings">⚙️ Settings</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="status-indicator">
+                    <span id="backend-status" class="status-dot online"></span>
+                    <span>Backend: <strong id="backend-text">Online</strong></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h2 id="page-title">Dashboard</h2>
+                </div>
+                <div class="header-right">
+                    <span class="refresh-info">Auto-updating every 3s</span>
+                </div>
+            </header>
+
+            <!-- Pages Container -->
+            <div class="pages-container">
+                
+                <!-- Dashboard Page -->
+                <div id="dashboard-page" class="page active">
+                    <div class="page-content">
+                        <!-- Quick Stats -->
+                        <section class="metrics-section">
+                            <div class="metric-card">
+                                <div class="metric-label">Pipeline Failures (24h)</div>
+                                <div class="metric-value" id="metric-failures">0</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Avg Diagnosis Time</div>
+                                <div class="metric-value" id="metric-diagnosis">0m</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Success Rate</div>
+                                <div class="metric-value" id="metric-success">0%</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Active Agents</div>
+                                <div class="metric-value" id="metric-agents">0</div>
+                            </div>
+                        </section>
+
+                        <!-- Two-column Grid -->
+                        <div class="grid-2">
+                            <!-- Recent Failures -->
+                            <section class="card">
+                                <div class="card-header">
+                                    <h3>Recent Pipeline Failures</h3>
+                                    <a href="#failures" class="link">View All →</a>
+                                </div>
+                                <div class="card-body">
+                                    <div id="dashboard-failures-list" class="list"></div>
+                                </div>
+                            </section>
+
+                            <!-- Agent Status -->
+                            <section class="card">
+                                <div class="card-header">
+                                    <h3>Agent Status</h3>
+                                    <a href="#agents" class="link">Manage →</a>
+                                </div>
+                                <div class="card-body">
+                                    <div id="dashboard-agents-list" class="list"></div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- Latest Decision -->
+                        <section class="card">
+                            <div class="card-header">
+                                <h3>Latest Agent Decision</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="latest-decision" class="decision-box"></div>
+                            </div>
+                        </section>
+
+                        <!-- Quick Actions -->
+                        <section class="card">
+                            <div class="card-header">
+                                <h3>Quick Actions</h3>
+                            </div>
+                            <div class="card-body">
+                                <button id="trigger-test-btn" class="btn btn-primary">🧪 Trigger Test Failure</button>
+                                <button id="refresh-btn" class="btn btn-secondary">🔄 Refresh Now</button>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Pipeline Failures Page -->
+                <div id="failures-page" class="page">
+                    <div class="page-content">
+                        <section class="card">
+                            <div class="card-header">
+                                <h3>Pipeline Failures</h3>
+                                <div class="filter-group">
+                                    <input type="text" id="search-failures" placeholder="Search failures..." class="input">
+                                    <select id="filter-status" class="select">
+                                        <option value="">All Status</option>
+                                        <option value="resolved">Resolved</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="failed">Failed</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="failures-list" class="list"></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Events Log Page -->
+                <div id="events-page" class="page">
+                    <div class="page-content">
+                        <section class="card">
+                            <div class="card-header">
+                                <h3>Events Log</h3>
+                                <div class="filter-group">
+                                    <select id="filter-event-type" class="select">
+                                        <option value="">All Types</option>
+                                        <option value="PIPELINE_FAILED">Pipeline Failed</option>
+                                        <option value="MR_OPENED">MR Opened</option>
+                                        <option value="SECURITY_SCAN">Security Scan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Project</th>
+                                            <th>Agent</th>
+                                            <th>Status</th>
+                                            <th>Time</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="events-tbody">
+                                        <tr><td colspan="6" class="empty">Loading...</td></tr>
+                                    </tbody>
+                                </table>
+
+                                <!-- Pagination -->
+                                <div class="pagination">
+                                    <button id="prev-page-btn" class="btn btn-small">← Previous</button>
+                                    <span id="page-info" class="page-counter"></span>
+                                    <button id="next-page-btn" class="btn btn-small">Next →</button>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Agent Status Page -->
+                <div id="agents-page" class="page">
+                    <div class="page-content">
+                        <section class="card">
+                            <div class="card-header">
+                                <h3>Agent Management</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="agents-grid" class="agents-grid"></div>
+                            </div>
+                        </section>
+
+                        <!-- Agent Details -->
+                        <section class="card">
+                            <div class="card-header">
+                                <h3>Agent Details</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="agent-details" class="agent-details"></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Settings Page -->
+                <div id="settings-page" class="page">
+                    <div class="page-content">
+                        <section class="card">
+                            <div class="card-header">
+                                <h3>Configuration</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>API Endpoint</label>
+                                    <input type="text" id="api-endpoint" class="input" value="http://localhost:8000">
+                                </div>
+                                <div class="form-group">
+                                    <label>Auto-refresh Interval (seconds)</label>
+                                    <input type="number" id="refresh-interval" class="input" value="3" min="1" max="60">
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" id="auto-refresh" checked>
+                                        Enable Auto-refresh
+                                    </label>
+                                </div>
+                                <button class="btn btn-primary">Save Settings</button>
+                            </div>
+                        </section>
+
+                        <!-- About -->
+                        <section class="card">
+                            <div class="card-header">
+                                <h3>About</h3>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Aura AI - Agent Control Panel</strong></p>
+                                <p>Version 1.0.0</p>
+                                <p>A comprehensive monitoring dashboard for the Aura AI agent framework.</p>
+                                <p style="margin-top: 1rem; color: #999;">
+                                    <strong>Backend Version:</strong> <span id="backend-version">Loading...</span>
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="failure-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Failure Diagnosis Report</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/services/api.js"></script>
+    <script src="src/utils/formatters.js"></script>
+    <script src="src/utils/storage.js"></script>
+    <script src="src/components/modal.js"></script>
+    <script src="src/pages/dashboard.js"></script>
+    <script src="src/pages/failures.js"></script>
+    <script src="src/pages/events.js"></script>
+    <script src="src/pages/agents.js"></script>
+    <script src="src/pages/settings.js"></script>
+    <script src="src/app.js"></script>
+</body>
+</html>
